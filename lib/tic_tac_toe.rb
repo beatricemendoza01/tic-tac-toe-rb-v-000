@@ -63,10 +63,9 @@ def won?(board)
   WIN_COMBINATIONS.detect do |win_combination|
     if board[win_combination[0]] == board[win_combination[1]] && board[win_combination[1]] == board[win_combination[2]] && position_taken?(board, win_combination[0]) && position_taken?(board, win_combination[1]) && position_taken?(board, win_combination[2])
       return win_combination
-    else
-      return false
     end
   end
+  return false
 end
 
 def full?(board)
