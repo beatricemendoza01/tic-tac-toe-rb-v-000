@@ -103,22 +103,22 @@ describe './lib/tic_tac_toe.rb' do
       expect(position_taken?(board, position)).to be(false)
     end
   end
-  
-  # describe '#valid_move?' do
-  #   it 'returns true/false based on position' do
-  #     board = [" ", " ", " ", " ", "X", " ", " ", " ", " "]
-  #
-  #     position = 0
-  #     expect(valid_move?(board, position)).to be_truthy
-  #
-  #     position = 4
-  #     expect(valid_move?(board, position)).to be_falsey
-  #
-  #     position = -1
-  #     expect(valid_move?(board, position)).to be_falsey
-  #   end
-  # end
-  #
+
+  describe '#valid_move?' do
+    it 'returns true/false based on position' do
+      board = [" ", " ", " ", " ", "X", " ", " ", " ", " "]
+
+      position = 0
+      expect(valid_move?(board, position)).to be_truthy
+
+      position = 4
+      expect(valid_move?(board, position)).to be_falsey
+
+      position = -1
+      expect(valid_move?(board, position)).to be_falsey
+    end
+  end
+
   # describe '#turn' do
   #   it 'makes valid moves' do
   #     board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
