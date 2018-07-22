@@ -63,29 +63,29 @@ describe './lib/tic_tac_toe.rb' do
 
   end
 
-  # describe '#move' do
-  #
-  #   it 'does not allow for a default third argument' do
-  #     board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-  #
-  #     expect{move(board, 0)}.to raise_error(ArgumentError)
-  #   end
-  #
-  #   it 'takes three arguments: board, position, and player token' do
-  #     board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-  #
-  #     expect{move(board, 0, "X")}.to_not raise_error
-  #   end
-  #
-  #   it 'allows "X" player in the bottom right and "O" in the top left ' do
-  #     board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-  #     move(board, 0, "O")
-  #     move(board, 8, "X")
-  #
-  #     expect(board).to eq(["O", " ", " ", " ", " ", " ", " ", " ", "X"])
-  #   end
-  # end
-  #
+  describe '#move' do
+
+    it 'does not allow for a default third argument' do
+      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+      expect{move(board, 0)}.to raise_error(ArgumentError)
+    end
+
+    it 'takes three arguments: board, position, and player token' do
+      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+
+      expect{move(board, 0, "X")}.to_not raise_error
+    end
+
+    it 'allows "X" player in the bottom right and "O" in the top left ' do
+      board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+      move(board, 0, "O")
+      move(board, 8, "X")
+
+      expect(board).to eq(["O", " ", " ", " ", " ", " ", " ", " ", "X"])
+    end
+  end
+
   # describe '#position_taken?' do
   #   it 'returns true/false based on position in board' do
   #     board = ["X", " ", " ", " ", " ", " ", " ", " ", "O"]
