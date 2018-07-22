@@ -94,3 +94,7 @@ def winner(board)
   win_combination = won?(board)
   win_combination.class == Array ? board[win_combination[0]] : nil
 end
+
+def play(board)
+
+end
