@@ -60,22 +60,28 @@ def current_player(board)
 end
 
 def won?(board)
-  WIN_COMBINATIONS.each do |win_combination|
-    win_index_1  = win_combination[0]
-    win_index_2  = win_combination[1]
-    win_index_3  = win_combination[2]
+  # WIN_COMBINATIONS.each do |win_combination|
+  #   win_index_1  = win_combination[0]
+  #   win_index_2  = win_combination[1]
+  #   win_index_3  = win_combination[2]
+  #
+  #   if (position_taken?(board, win_index_1) && position_taken?(board, win_index_2) && position_taken?(board, win_index_3))
+  #     if board[win_index_1] == board[win_index_2] && board[win_index_2] == board[win_index_3]
+  #       return win_combination
+  #     end
+  #   end
+  # end
+  # return false
 
-    if (position_taken?(board, win_index_1) && position_taken?(board, win_index_2) && position_taken?(board, win_index_3))
-      if board[win_index_1] == board[win_index_2] && board[win_index_2] == board[win_index_3]
-        return win_combination
-      end
+  WIN_COMBINATIONS.detect do |win_combination|
+    if board[win_combination[0]] == board[win_combination[1]] && board[win_combination[1]] == board[win_combination[2]]
+      return win_combination
     end
   end
-  return false
 end
 
 def full?(board)
-  board.all? {|board_space| position_taken?(board, board.index(board_space))}
+  board.all? {|board_space| board_space == "X" || board_space == "O"}
 end
 
 def draw?(board)
