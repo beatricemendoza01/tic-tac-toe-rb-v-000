@@ -32,3 +32,65 @@ end
 def valid_move?(board, index)
   !position_taken?(board, index) && index.between?(0, 8)
 end
+
+def turn(board)
+  puts "Please enter 1-9:"
+  input = gets.strip
+  index = input_to_index(input)
+  if valid_move?(board, index)
+    move(board, index)
+    display_board(board)
+  else
+    turn(board)
+  end
+end
+
+def turn_count(board)
+  counter = 0
+  board.each do |board_space|
+    if board_space == "X" || board_space == "O"
+      counter += 1
+    end
+  end
+  counter
+end
+
+def current_player(board)
+  turn_count(board) % 2 == 0 ? "X" : "O"
+end
+
+def won?(board)
+  WIN_COMBINATIONS.each do |win_combination|
+    win_index_1  = win_combination[0]
+    win_index_2  = win_combination[1]
+    win_index_3  = win_combination[2]
+
+    if (position_taken?(board, win_index_1) && position_taken?(board, win_index_2) && position_taken?(board, win_index_3))
+      if board[win_index_1] == board[win_index_2] && board[win_index_2] == board[win_index_3]
+        return win_combination
+      end
+    end
+  end
+  return false
+end
+
+def full?(board)
+  board.all? {|board_space| position_taken?(board, board.index(board_space))}
+end
+
+def draw?(board)
+  if !won?(board) && full?(board)
+    return true
+  elsif (!won?(board) && !full?(board) || won?(board))
+    return false
+  end
+end
+
+def over?(board)
+  won?(board) || draw?(board) ? true : false
+end
+
+def winner(board)
+  win_combination = won?(board)
+  win_combination.class == Array ? board[win_combination[0]] : nil
+end
